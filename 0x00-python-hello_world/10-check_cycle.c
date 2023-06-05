@@ -1,7 +1,5 @@
 #include "lists.h"
 
-void free_listaddr(listaddr_t *node);
-
 /**
  * check_cycle - Checks if a singly-linked list has a cycle
  * @list: The list to be checked
@@ -10,65 +8,21 @@ void free_listaddr(listaddr_t *node);
  */
 int check_cycle(listint_t *list)
 {
-	/* nodes in a register list of all the addresses in list */
-	listaddr_t *reg_head, *reg, *new;
-
-	if (!list)
-		return (0);
-
-	reg_head = malloc(sizeof(listaddr_t));
-	if (!reg_head)
-		exit(EXIT_FAILURE);
-	reg_head->val = list;
-	reg_head->next = NULL;
-
-	reg = reg_head;
+	listint_t *mark;
 
 	while (list)
 	{
+		mark = list;
 		list = list->next;
-		while (reg)
+		while (list)
 		{
-			if (reg->val == list)
+			if (list == mark)
 			{
-				free_listaddr(reg_head);
 				return (1);
 			}
-			reg = reg->next;
+			list = list->next;
 		}
-		reg = reg_head;
-		while (reg->next)
-			reg = reg->next;
-		new = malloc(sizeof(listaddr_t));
-		if (!new)
-		{
-			free_listaddr(reg_head);
-			exit(EXIT_FAILURE);
-		}
-		new->val = list;
-		new->next = NULL;
-		reg->next = new;
-		reg = reg_head;
+		list = mark->next;
 	}
-	free_listaddr(reg_head);
 	return (0);
-}
-
-/**
- * free_listaddr - Frees a listaddr_t list
- * @node: Pointer to the first node of the list to be freed
- *
- * Return: Nothing.
- */
-void free_listaddr(listaddr_t *node)
-{
-	listaddr_t *ptr;
-
-	ptr = node;
-	while (ptr)
-	{
-		node = node->next;
-		free(ptr);
-		ptr = node;
-	}
 }
