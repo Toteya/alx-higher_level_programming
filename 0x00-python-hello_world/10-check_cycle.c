@@ -23,10 +23,9 @@ int check_cycle(listint_t *list)
 	reg_head->next = NULL;
 
 	reg = reg_head;
-
+	list = list->next;
 	while (list)
 	{
-		list = list->next;
 		while (reg)
 		{
 			if (reg->val == list)
@@ -49,6 +48,7 @@ int check_cycle(listint_t *list)
 		new->next = NULL;
 		reg->next = new;
 		reg = reg_head;
+		list = list->next;
 	}
 	free_listaddr(reg_head);
 	return (0);
