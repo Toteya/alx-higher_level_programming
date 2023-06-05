@@ -1,0 +1,4 @@
+#!/bin/bash
+python3 -c 'import py_compile
+import os
+py_compile.compile(os.getenv("PYFILE"), os.getenv("PYFILEc"))'
