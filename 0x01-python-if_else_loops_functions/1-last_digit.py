@@ -10,4 +10,4 @@ elif ld == 0:
     ld = 0
 else:
     a = "less than 6 and not 0"
-print(f"The last digit of {number:d} is {ld:.0f} and is {a}")
+print(f"Last digit of {number:d} is {ld:.0f} and is {a}")
