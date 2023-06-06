@@ -7,4 +7,4 @@ def uppercase(str):
             str_copy = f"{str_copy}{(chr(ord(c) - 32))}"
         else:
             str_copy = f"{str_copy}{c}"
-    print(str_copy)
+    print("{}".format(str_copy))
