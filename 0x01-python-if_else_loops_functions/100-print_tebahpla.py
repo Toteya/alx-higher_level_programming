@@ -4,4 +4,4 @@ for i in reversed(range(26)):
         i += ord('A')
     else:
         i += ord('a')
-    print(chr(i), end="")
+    print("{}".format(chr(i)), end="")
