@@ -28,11 +28,11 @@ with Python, followed by a new line.
 
 * -10. Technical interview preparation (Task).
 
-* -11. 
+* -11. Write a Python script that prints exactly and that piece of art is useful - Dora Korpar, 2015-10-19, followed by a new line. 
 
-* -12. 
+* -12. Write a script that compiles a Python script file.
 
-* -13.
+* -13. Write the Python function def magic_calculation(a, b): that does exactly the same as the following Python bytecode:
 
 ## Resources:
 * [Python programming]https://intranet.alxswe.com/concepts/550
