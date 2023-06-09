@@ -13,18 +13,15 @@
 
 * -5. Write a program that imports the variable a from the file variable_load_5.py and prints its value.
 
-* -6. 
+* -6. Write a program that imports all functions from the file calculator_1.py and handles basic operations.
 
-* -7. 
+* -7. Write a program that prints #pythoniscool, followed by a new line, in the standard output.
 
-* -8. 
+* -8. Write the Python function def magic_calculation(a, b): that does exactly the same as the following Python bytecode:
 
-* -9. 
+* -9. Write a program that prints the alphabet in uppercase, followed by a new line.
 
 ## Resources:
-* [
-* [
-* [
-* [
-* [
-* [
+* [Modules]https://intranet.alxswe.com/rltoken/SY-cMfnwbHoPFaJ-D_LWig
+* [Command line arguments]https://intranet.alxswe.com/rltoken/5e3TphtJ6WSVkWsdd2eX_A
+* [Pycodestyle – Style Guide for Python Code]https://intranet.alxswe.com/rltoken/FlkAJ_kPXHC4Y65WrRvA4A
