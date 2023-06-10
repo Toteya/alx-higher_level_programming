@@ -8,26 +8,31 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t **ptr;
+	listint_t **ptr, *p;
 	unsigned int i = 0, j;
 
 	if (!(*head) || (*head)->next == NULL)
 		return (1);
 
-	ptr = malloc(sizeof(listint_t *));
+	p = *head;
+	while (p->next)
+	{
+		p = p->next;
+		i++;
+	}
+
+	ptr = malloc(sizeof(listint_t *) * (i + 1));
 	if (!ptr)
 		exit(EXIT_FAILURE);
 
 	*ptr = *head;
-
+	i = 0;
 	while (ptr[i]->next)
 	{
+		ptr[i + 1] = ptr[i]->next;
 		i++;
-		ptr = realloc(ptr, sizeof(listint_t *) * (i + 1));
-		if (!ptr)
-			exit(EXIT_FAILURE);
-		ptr[i] = ptr[i - 1]->next;
 	}
+
 	j = i;
 	for (i = 0; i < j; i++, j--)
 	{
