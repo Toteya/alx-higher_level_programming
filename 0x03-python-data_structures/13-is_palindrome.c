@@ -9,8 +9,7 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t **ptr, *p;
-	unsigned int i = 0, n;
-	int even;
+	unsigned int i = 0, j;
 
 	if (!(*head) || (*head)->next == NULL)
 		return (1);
@@ -22,31 +21,24 @@ int is_palindrome(listint_t **head)
 		i++;
 	}
 
-	even = i % 2;
-	n = i /  2;
-	ptr = malloc(sizeof(listint_t *) * (n + 1));
+	ptr = malloc(sizeof(listint_t *) * (i + 1));
 	if (!ptr)
 		exit(EXIT_FAILURE);
 
 	*ptr = *head;
-	for (i = 0; i < n; i++)
+	for (i = 0; ptr[i]->next; i++)
 	{
 		ptr[i + 1] = ptr[i]->next;
 	}
 
-	if (!even)
-		p = ptr[i];
-	else
-		p = ptr[i]->next;
-	while (p)
+	j = i;
+	for (i = 0; i < j; i++, j--)
 	{
-		if (ptr[i]->n != p->n)
+		if (ptr[i]->n != ptr[j]->n)
 		{
 			free(ptr);
 			return (0);
 		}
-		p = p->next;
-		i--;
 	}
 	free(ptr);
 	return (1);
