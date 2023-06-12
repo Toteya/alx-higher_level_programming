@@ -34,7 +34,10 @@ int is_palindrome(listint_t **head)
 		ptr[i + 1] = ptr[i]->next;
 	}
 
-	p = ptr[i + even];
+	if (!even)
+		p = ptr[i];
+	else
+		p = ptr[i]->next;
 	while (p)
 	{
 		if (ptr[i]->n != p->n)
