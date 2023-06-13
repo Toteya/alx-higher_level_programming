@@ -8,38 +8,53 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t **ptr, *p;
-	unsigned int i = 0, j;
+	listint_t *pl, *pr, *next, *prev;
+	unsigned int i = 0, n, even;
 
 	if (!(*head) || (*head)->next == NULL)
 		return (1);
 
-	p = *head;
-	while (p->next)
+	pl = *head;
+	while (pl->next)
 	{
-		p = p->next;
+		pl = pl->next;
+		i++;
+	}
+	even = i % 2;
+	n = (i / 2) + 1 + even;
+
+	pl = pr = *head;
+	i = 0;
+	while (pr)
+	{
+		if (i == n)
+		{
+			next = pr->next;
+			pr->next = NULL;
+			prev = pr;
+			pr = next;
+		}
+		else if (i > n)
+		{
+			next = pr->next;
+			pr->next = prev;
+			prev = pr;
+			pr = next;
+		}
+		else
+		{
+			pr = pr->next;
+		}
 		i++;
 	}
 
-	ptr = malloc(sizeof(listint_t *) * (i + 1));
-	if (!ptr)
-		exit(EXIT_FAILURE);
-
-	*ptr = *head;
-	for (i = 0; ptr[i]->next; i++)
+	pr = prev;
+	while (pr)
 	{
-		ptr[i + 1] = ptr[i]->next;
-	}
-
-	j = i;
-	for (i = 0; i < j; i++, j--)
-	{
-		if (ptr[i]->n != ptr[j]->n)
-		{
-			free(ptr);
+		if (pl->n != pr->n)
 			return (0);
-		}
+		pl = pl->next;
+		pr = pr->next;
 	}
-	free(ptr);
 	return (1);
 }
