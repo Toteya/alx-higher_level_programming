@@ -14,17 +14,19 @@ int is_palindrome(listint_t **head)
 	if (!(*head) || (*head)->next == NULL)
 		return (1);
 
+	/* Find length of the linked list */
 	pl = *head;
 	while (pl->next)
 	{
 		pl = pl->next;
 		i++;
 	}
+
+	/* Reverse the direction of the right half of the linked list */
 	even = i % 2;
 	n = (i / 2) + 1 + even;
-
-	pl = pr = *head;
 	i = 0;
+	pl = pr = *head;
 	while (pr)
 	{
 		if (i == n)
@@ -42,12 +44,11 @@ int is_palindrome(listint_t **head)
 			pr = next;
 		}
 		else
-		{
 			pr = pr->next;
-		}
 		i++;
 	}
 
+	/* Compare left half to the right half of the linked list */
 	pr = prev;
 	while (pr)
 	{
