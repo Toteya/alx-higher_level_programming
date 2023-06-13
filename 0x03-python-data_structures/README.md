@@ -29,7 +29,15 @@
 
 * -13. Technical interview preparation: Write a function in C that checks if a singly linked list is a palindrome.
 
+* -14. CPython: Create a C function that prints some basic info about Python lists.
+
 ## Resources:
 * [3.1.3. Lists]https://intranet.alxswe.com/rltoken/VarQbHxfmbnpGnaGp3Nb_A
 * [Data structures]https://intranet.alxswe.com/rltoken/2aa8Mp-V2eSieGeX3OX8yQ
 * [Learn to Program 6 : Lists]https://intranet.alxswe.com/rltoken/BX2_CuHj1sq4eYGiXbCYSg
+## Advanced Task Resources:
+* [Your Guide to the CPython Source Code]https://realpython.com/cpython-source-code-guide/#part-1-introduction-to-cpython
+* [listobject.h]https://svn.python.org/projects/python/trunk/Include/listobject.h
+* [object.h]https://svn.python.org/projects/python/trunk/Include/object.h
+* [Common Object Structures]https://intranet.alxswe.com/rltoken/jmRTk4m1VSzjsu3QTGaC6w
+* [List Objects]https://intranet.alxswe.com/rltoken/7V1HlQRESjCqrKrw_O_Urw
