@@ -23,9 +23,9 @@ def roman_to_int(roman_string):
             return 0
         try:
             y = roman_string[i + 1]
-            idx_x = roman_keys.index(x) 
+            idx_x = roman_keys.index(x)
             # Check for (e.g. IX, XC, condition)
-            if y == roman_keys[idx_x + 1] or y == roman_keys[idx_x + 2]: 
+            if y == roman_keys[idx_x + 1] or y == roman_keys[idx_x + 2]:
                 num += (roman_numerals.get(y) - roman_numerals.get(x))
                 # Skip the next element in the string
                 skip = True
