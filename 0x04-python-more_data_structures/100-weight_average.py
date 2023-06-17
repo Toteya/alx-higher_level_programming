@@ -5,4 +5,7 @@ def weight_average(my_list=[]):
     for t in my_list:
         sum += t[0] * t[1]
         total += t[1]
-    return sum / total
+    try:
+        return sum / total
+    except ZeroDivisionError:
+        return 0
