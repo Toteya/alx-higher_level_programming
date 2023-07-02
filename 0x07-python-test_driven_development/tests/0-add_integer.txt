@@ -1,0 +1,39 @@
+How to use the ``0-add_integer`` module
+=======================================
+
+Contains the function ``add_integer()``
+------------------------------
+
+First import add_integer from 0-add_integer:
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+The ``add_integer()`` function returns the sum of two integers.
+Arguments may be of datatype int or float. The second number is
+optional and has a default value of 98.
+	
+	>>> add_integer(4, 3)
+	7
+
+	
+	>>> add_integer(4.9, -5)
+	-1
+
+	>>> add_integer(4.0, -5)
+	-1
+	
+	>>> add_integer(2)
+	100
+
+Any datatypes other than int or float are passed as arguments,
+a TypeError exception will be triggered.
+	
+	>>> add_integer('x', 3)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+	
+	>>> add_integer(3, (1, 2))
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
