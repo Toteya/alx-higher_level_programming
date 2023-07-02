@@ -1,0 +1,79 @@
+How to use the ``2-matrix_divided`` module
+==========================================
+
+Contains the function ``matrix_divided``
+----------------------------------------
+
+First import matrix_divided from 2-matrix_divided:
+	>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+The ``matrix_divided`` function divides all elements of a matrix by any number,
+div. It returns a matrix of the same size with elements rounded to 2 decimal
+places.
+
+	>>> matrix = [
+	...	[3, 6, 9],
+	...	[12, 15, 18],
+	...	[21, 24, 27]
+	... ]
+	>>> matrix_divided(matrix, 3)
+	[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]]
+
+	>>> matrix_divided([[2, 4], [6, 8]], 3)
+	[[0.67, 1.33], [2.0, 2.67]]
+
+The matrix must be a list of lists ``[[], []]`` of integers or floats,
+otherwise a TypeError is raised.
+
+	>>> matrix = [
+	...	[3, 6, 9],
+	...	(12, 15, 18),
+	...	'21, 24, 27'
+	... ]
+	>>> matrix_divided(matrix, 3)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+	>>> matrix = [
+	...	[3, 6, 9],
+	...	['a', 'b', 'c'],
+	...	[21, 24, 27]
+	... ]
+	>>> matrix_divided(matrix, 3)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+	>>> matrix = None
+	>>> matrix_divided(matrix, 2)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Each row of the matrix must be of the same of the size, otherwise a TypeError
+is raised.
+
+	>>> matrix = [
+	...	[1, 2, 3],
+	...	[4, 5, 6, 7]
+	... ]
+	>>> matrix_divided(matrix, 3)
+	Traceback (most recent call last):
+	...
+	TypeError: Each row of the matrix must have the same size
+
+The number to divided by, div, must be an integer or float, otherwise a
+TypeError is raised.
+
+	>>> matrix_divided([[2, 4], [6, 8]], '3')
+	Traceback (most recent call last):
+	...
+	TypeError: div must be a number
+
+Naturally, divisions by zero are not allowed.
+
+	>>> matrix_divided([[2, 4], [6, 8]], 0)
+	Traceback (most recent call last):
+	...
+	ZeroDivisionError: division by zero
