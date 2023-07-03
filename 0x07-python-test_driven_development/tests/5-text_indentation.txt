@@ -1,0 +1,43 @@
+The ``5-text_indentation`` module
+=================================
+
+Contains the function ``text_indentation()``
+--------------------------------------------
+
+First import text_indentation from 5-text_indentation:
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+The function prints a text (string) and prints new lines after each of the
+characters '.', '?', ':'. 
+
+	>>> text_indentation("Hello, World!")
+	Hello, World!
+
+	>>> text_indentation("Hello. World")
+	Hello.
+	<BLANKLINE>
+	World
+
+	>>> text_indentation("Comedian: Knock, knock! Audience: Who's there?")
+	Comedian:
+	<BLANKLINE>
+	Knock, knock! Audience:
+	<BLANKLINE>
+	Who's there?
+	<BLANKLINE>
+
+	>>> text_indentation("To be or not to be?\
+	... That is the question.")
+	To be or not to be?
+	<BLANKLINE>
+	That is the question.
+	<BLANKLINE>
+
+The argument passed to the function must be a string, otherwise 
+a TypeError exception is raised.
+	
+	>>> text_indentation(['A', 'B'])
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
