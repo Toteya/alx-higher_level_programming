@@ -62,4 +62,5 @@ class Rectangle:
         return rectangle_str
 
     def __repr__(self):
+        """ Returns the string represantation of the recatangle """
         return f"Rectangle({self.__width}, {self.__height})"
