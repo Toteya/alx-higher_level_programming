@@ -30,3 +30,4 @@
 * [Learn to Program 9 : Object Oriented Programming]https://intranet.alxswe.com/rltoken/MxIOanLf5vG5QeCWek2nqQ
 * [Python Classes and Objects]https://intranet.alxswe.com/rltoken/AoLH4xp5StrQST-Cu0Fg8w
 * [Object Oriented Programming]https://intranet.alxswe.com/rltoken/-vVnWzwR3a3X0H8Oia78Ug
+* [Understanding Python Class Attributes]https://www.pythontutorial.net/python-oop/python-class-attributes/
