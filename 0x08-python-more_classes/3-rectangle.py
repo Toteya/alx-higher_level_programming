@@ -57,7 +57,7 @@ class Rectangle:
         rectangle_str = ""
         if self.__width == 0 or self.__height == 0:
             return rectangle_str
-        rectangle_str += f"{'#' * self.__width}\n"
-        rectangle_str += rectangle_str * self.__height
+        row = '#' * self.__width
+        rectangle_str = (row + '\n') * self.__height
         rectangle_str = rectangle_str[:-1]  # Remove the last newline character
         return rectangle_str
