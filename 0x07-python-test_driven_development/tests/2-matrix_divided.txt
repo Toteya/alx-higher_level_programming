@@ -22,6 +22,9 @@ places.
 	>>> matrix_divided([[2, 4], [6, 8]], 3)
 	[[0.67, 1.33], [2.0, 2.67]]
 
+	>>> matrix_divided([[]], 2)
+	[[]]
+
 The matrix must be a list of lists ``[[], []]`` of integers or floats,
 otherwise a TypeError is raised.
 
