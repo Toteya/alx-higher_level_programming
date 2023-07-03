@@ -31,3 +31,4 @@
 * [Python Classes and Objects]https://intranet.alxswe.com/rltoken/AoLH4xp5StrQST-Cu0Fg8w
 * [Object Oriented Programming]https://intranet.alxswe.com/rltoken/-vVnWzwR3a3X0H8Oia78Ug
 * [Understanding Python Class Attributes]https://www.pythontutorial.net/python-oop/python-class-attributes/
+* [Python OOP Tutorial 3: classmethods and staticmethods]https://www.youtube.com/watch?v=rq8cL2XMM5M
