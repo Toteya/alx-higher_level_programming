@@ -93,7 +93,7 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
-        """ Instantiates a new Rectangle object
+        """ Instantiates a new Rectangle object of equal width and height
 
         Args:
             size (int): Size of the rectangle (width, height = size)
