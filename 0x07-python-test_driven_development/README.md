@@ -25,3 +25,4 @@
 * [Unit Tests in Python]https://intranet.alxswe.com/rltoken/wfuUl81Q3Nku1qCzdDHAfA
 * [Unittest module]https://intranet.alxswe.com/rltoken/1v-d9Ol13JabJq8UI6MIPg
 * [Interactive and Non-interactive tests]https://intranet.alxswe.com/rltoken/lB65hNMXBziXy4A0YLIOog
+* [unittest - Framework]https://docs.python.org/3/library/unittest.html#unittest.TestCase.debug
