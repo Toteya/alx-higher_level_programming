@@ -41,3 +41,10 @@ a TypeError exception is raised.
 	Traceback (most recent call last):
 	...
 	TypeError: text must be a string
+	
+An argument to the function is mandatory:
+
+	>>> text_indentation() #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	TypeError: text_indentation() missing 1 ...
