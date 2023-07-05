@@ -1,0 +1,108 @@
+The ``101-lazy_matrix_mul`` module
+===========================
+
+Contains the lazy_matrix_mul() function which multiplies two matrices
+----------------------------------------------------------------
+
+Import the function matrix_mul form 100-matrix_mul:
+
+	>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+The function multiplies two matrices m_a and m_b.
+	
+	>>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+	[[ 7 10]
+	 [15 22]]
+
+	>>> print(lazy_matrix_mul([[5, 3], [-2, 1], [4, 1]], [[-2, -1.0], [5, 0]]))
+	[[ 5. -5.]
+	 [ 9.  2.]
+	 [-3. -4.]]
+
+	>>> print(lazy_matrix_mul([[1, 2, 3], [4, 5, 6]], [[1, 2], [3, 4], [5, 6]]))
+	[[22 28]
+	 [49 64]]
+
+	>>> print(lazy_matrix_mul([[1, 2]], [[0], [0]]))
+	[[0]]
+
+	>>> print(lazy_matrix_mul([[1], [2]], [[1, 2]]))
+	[[1 2]
+	 [2 4]]
+
+	>>> print(lazy_matrix_mul([[2]], [[1, 2]]))
+	[[2 4]]
+
+
+	>>> print(lazy_matrix_mul([4, 4], [[2], [2]]))
+	[16]
+
+	>>> print(lazy_matrix_mul( [[1, 2], [3 + 4j, 4]], [[2, 2], [2, 2]]))
+	[[ 6.+0.j  6.+0.j]
+         [14.+8.j 14.+8.j]]
+
+Both the matrices are lists of lists containing only integers or floats:
+
+	>>> lazy_matrix_mul([[1], [2]], [4, 4]) #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	ValueError: matmul: Input operand 1 ...
+
+	Traceback (most recent call last):
+	...
+	TypeError: m_a should contain only integers or floats
+
+m_a and m_b may not be empty lists or contain empty lists:
+
+	>>> lazy_matrix_mul([[]], [[2]]) #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	ValueError: matmul: Input operand 1 ...
+
+	>>> lazy_matrix_mul([[1, 1]], [[2], []])
+	Traceback (most recent call last):
+	...
+	ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+
+All rows must be the same lengths:
+
+	>>> lazy_matrix_mul([[1, 2, 3], [4, 5, 6, 7]], [[1, 2], [3, 4], [5, 6]])
+	Traceback (most recent call last):
+	...
+	ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+	
+	>>> lazy_matrix_mul([[1, 2]], [[1, 2], [3]])
+	Traceback (most recent call last):
+	...
+	ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+
+It must be possible to multiply the two matrices. i.e. The number
+of columns of m_a must be equal to the number of rows of m_b:
+
+	>>> lazy_matrix_mul([[1], [2]], [[1, 2], [3, 4]]) #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	ValueError: matmul: Input operand 1 ...
+	
+	>>> lazy_matrix_mul([[1, 2]], [[1, 2]]) #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	ValueError: matmul: Input operand 1 ...
+	
+	>>> lazy_matrix_mul([[1, 2]], [[2]]) #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	ValueError: matmul: Input operand 1 ...
+
+Both arguments to the functions are mandatory:
+No arguments:	
+	>>> lazy_matrix_mul() #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	TypeError: lazy_matrix_mul() missing 2 ...
+
+Only one argument:
+	>>> lazy_matrix_mul([[5, 10]]) #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	TypeError: lazy_matrix_mul() missing 1 ...
