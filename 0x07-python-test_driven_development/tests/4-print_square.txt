@@ -52,3 +52,10 @@ If size is not an int:
 	Traceback (most recent call last):
 	...
 	TypeError: size must be an integer
+
+The argument to the function is mandatory:
+
+	>>> print_square() #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	TypeError: print_square() missing ...
