@@ -19,6 +19,20 @@ characters '.', '?', ':'.
 	<BLANKLINE>
 	World
 
+	>>> text_indentation("Hello.World")
+	Hello.
+	<BLANKLINE>
+	World
+	
+	>>> text_indentation("Holberton. School? How are you:    John   ")
+	Holberton.
+	<BLANKLINE>
+	School?
+	<BLANKLINE>
+	How are you:
+	<BLANKLINE>
+	John
+	
 	>>> text_indentation("Comedian: Knock, knock! Audience: Who's there?")
 	Comedian:
 	<BLANKLINE>

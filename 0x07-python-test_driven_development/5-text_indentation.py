@@ -14,7 +14,7 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     tmp_text = text.replace('.', '.\n\n').replace('?', '?\n\n')
-    tmp_text = temp.replace(':', ':\n\n')
+    tmp_text = tmp_text.replace(':', ':\n\n')
     tmp_text = tmp_text.split("\n ")
     new_text = []
     for s_text in tmp_text:
@@ -23,5 +23,5 @@ def text_indentation(text):
                 s_text = s_text[1:]
             if s_text[-1] == ' ':
                 s_text = s_text[:-1]
-            new_text.append(s_text)
+        new_text.append(s_text)
     print("\n".join(new_text), end="")
