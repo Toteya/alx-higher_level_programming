@@ -13,9 +13,15 @@ def text_indentation(text):
     """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    new_text = text.replace(".", ".\n\n")
-    new_text = new_text.replace("?", "?\n\n")
-    new_text = new_text.replace(":", ":\n\n")
-    new_text = new_text.replace(" \n", "\n")
-    new_text = new_text.replace("\n ", "\n")
-    print(new_text, end="")
+    tmp_text = text.replace('.', '.\n\n').replace('?', '?\n\n')
+    tmp_text = temp.replace(':', ':\n\n')
+    tmp_text = tmp_text.split("\n ")
+    new_text = []
+    for s_text in tmp_text:
+        while (s_text[0] == ' ' or s_text[-1] == ' '):
+            if s_text[0] == ' ':
+                s_text = s_text[1:]
+            if s_text[-1] == ' ':
+                s_text = s_text[:-1]
+            new_text.append(s_text)
+    print("\n".join(new_text), end="")
