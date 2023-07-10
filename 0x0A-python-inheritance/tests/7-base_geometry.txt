@@ -23,6 +23,16 @@ The `integer_validator()` function validates the value:
 	...
 	TypeError: height must be an integer
 
+	>>> BaseGeometry().integer_validator("height", 2.0)
+	Traceback (most recent call last):
+	...
+	TypeError: height must be an integer
+
+	>>> BaseGeometry().integer_validator("height", True)
+	Traceback (most recent call last):
+	...
+	TypeError: height must be an integer
+
 	>>> BaseGeometry().integer_validator("height", -2)
 	Traceback (most recent call last):
 	...
