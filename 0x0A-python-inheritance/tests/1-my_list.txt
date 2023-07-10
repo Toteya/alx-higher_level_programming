@@ -38,3 +38,6 @@ object method `print_sorted` prints the list in ascending order:
 	>>> my_list = MyList()
 	>>> my_list.print_sorted()
 	[]
+
+	>>> my_list.__class__
+	<class '1-my_list.MyList'>
