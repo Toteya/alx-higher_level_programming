@@ -14,7 +14,7 @@ class Student:
         """ Returns a dictionary representation of this
         Student instance of the given attributes `attrs`
         """
-        if not attrs:
+        if attrs is None:
             return self.__dict__
         dict = {}
         for key in attrs:
