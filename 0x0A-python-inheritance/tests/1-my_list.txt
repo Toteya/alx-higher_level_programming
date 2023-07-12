@@ -22,11 +22,9 @@ object method `print_sorted` prints the list in ascending order:
 	>>> my_list.print_sorted()
 	[1, 2, 3, 4, 5]
 
+original list remains unchanged:
 	>>> print(my_list)
 	[3, 1, 2, 5, 4]
-
-	>>> MyList.print_sorted(my_list)
-	[1, 2, 3, 4, 5]
 
 	>>> MyList.print_sorted([5, 4, 3, 2, 1])
 	[1, 2, 3, 4, 5]
