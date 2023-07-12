@@ -26,4 +26,4 @@ class Student:
         """ Replaces all attributes of the Student instance
         """
         for key in json:
-            setattr(self, key, json.get(key)) 
+            setattr(self, key, json.get(key))
