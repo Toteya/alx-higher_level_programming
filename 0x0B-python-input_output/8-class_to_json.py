@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" 8-class_to_json module """
+""" 8-class_to_json module
+"""
 import json
 
 
