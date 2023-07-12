@@ -23,9 +23,11 @@ def append_after(filename="", search_string="", new_string=""):
         insert_str_at_line_nr = []
         for line in text:
             if search_string in line:
-                insert_str_at_line_nr.append(line_number)
+                insert_str_at_line_nr.append(line_number + 1)
             line_number += 1
-        for i in insert_str_at_line_nr:
+        for i in reversed(insert_str_at_line_nr):
+            # insert from the end so that the you don't affect the index number
+            # as you insert (the list is growing)
             text.insert(i, new_string)
     with open(filename, mode="w", encoding="utf-8") as a_file:
         a_file.writelines(text)
