@@ -15,8 +15,9 @@ def append_after(filename="", search_string="", new_string=""):
         return
     text = ""
     with open(filename, mode="r", encoding="utf-8") as a_file:
-        text = a_file.read()
-        # text = text.split("\n")
+        # read line by line instead of reading the entire file at once
+        for line in a_file:
+            text += line
         text = text.splitlines(True)
         line_number = 0
         insert_str_at_line_nr = []
