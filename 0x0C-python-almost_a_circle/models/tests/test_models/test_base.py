@@ -17,11 +17,13 @@ class TestBase(unittest.TestCase):
 
         b1 = Base()
         self.assertEqual(b1.id, 2)
-        
+
         b2 = Base(63)
         self.assertEqual(b2.id, 63)
-        
+
         b3 = Base()
         self.assertEqual(b3.id, 3)
 
         self.assertTrue(isinstance(b3, Base))
+        with self.assertRaises(AttributeError):
+            print(Base.__nb_objects)
