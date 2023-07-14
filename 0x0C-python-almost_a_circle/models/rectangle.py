@@ -89,3 +89,8 @@ class Rectangle(Base):
         self.validate_int("y", y)
         self.validate_ge_zero("y", y)
         self.__y = y
+
+    def area(self):
+        """ Returns the area of the Rectangle instance
+        """
+        return self.width * self.height

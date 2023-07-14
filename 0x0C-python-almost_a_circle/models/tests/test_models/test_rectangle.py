@@ -177,3 +177,13 @@ class TestRectangle(unittest.TestCase):
             rect.validate_gt_zero("width", 0)
         with self.assertRaises(ValueError):
             rect.validate_gt_zero("width", -5)
+
+    def test_area(self):
+        """ Tests the area method that returns the area
+        of a Rectangle instance
+        """
+        rect = Rectangle(2, 4, 0, 0)
+        self.assertEqual(rect.area(), 8)
+
+        rect.width = 4
+        self.assertEqual(rect.area(), 16)
