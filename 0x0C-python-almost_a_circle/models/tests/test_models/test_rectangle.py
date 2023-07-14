@@ -5,6 +5,7 @@ import unittest
 from models.rectangle import Rectangle
 from models.base import Base
 
+
 class TestRectangle(unittest.TestCase):
     """ Tests the Rectangle class and its
     methods
@@ -44,6 +45,23 @@ class TestRectangle(unittest.TestCase):
         rect.width = 1
         self.assertEqual(rect.width, 1)
 
+        with self.assertRaises(TypeError):
+            rect.width = None
+        with self.assertRaises(TypeError):
+            rect.width = '2'
+        with self.assertRaises(TypeError):
+            rect.width = [2]
+        with self.assertRaises(TypeError):
+            rect.width = (2,)
+        with self.assertRaises(TypeError):
+            rect.width = {2, 3}
+        with self.assertRaises(TypeError):
+            rect.width = (2.0)
+        with self.assertRaises(ValueError):
+            rect.width = (0)
+        with self.assertRaises(ValueError):
+            rect.width = (-1)
+
     def test_height(self):
         """ Tests getter and setter for Rectangle height
         """
@@ -51,6 +69,23 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rect.height, 3)
         rect.height = 4
         self.assertEqual(rect.height, 4)
+
+        with self.assertRaises(TypeError):
+            rect.height = None
+        with self.assertRaises(TypeError):
+            rect.height = '2'
+        with self.assertRaises(TypeError):
+            rect.height = [2]
+        with self.assertRaises(TypeError):
+            rect.height = (2,)
+        with self.assertRaises(TypeError):
+            rect.height = {2, 3}
+        with self.assertRaises(TypeError):
+            rect.height = (2.0)
+        with self.assertRaises(ValueError):
+            rect.height = (0)
+        with self.assertRaises(ValueError):
+            rect.height = (-1)
 
     def test_x(self):
         """ Tests getter and setter for Rectangle private attriibute x
@@ -60,6 +95,21 @@ class TestRectangle(unittest.TestCase):
         rect.x = 0
         self.assertEqual(rect.x, 0)
 
+        with self.assertRaises(TypeError):
+            rect.x = None
+        with self.assertRaises(TypeError):
+            rect.x = '2'
+        with self.assertRaises(TypeError):
+            rect.x = [2]
+        with self.assertRaises(TypeError):
+            rect.x = (2,)
+        with self.assertRaises(TypeError):
+            rect.x = {2, 3}
+        with self.assertRaises(TypeError):
+            rect.x = (2.0)
+        with self.assertRaises(ValueError):
+            rect.x = (-1)
+
     def test_y(self):
         """ Tests getter and setter for Rectangle private attriibute y
         """
@@ -67,3 +117,63 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rect.y, 1)
         rect.y = 5
         self.assertEqual(rect.y, 5)
+
+        with self.assertRaises(TypeError):
+            rect.y = None
+        with self.assertRaises(TypeError):
+            rect.y = '2'
+        with self.assertRaises(TypeError):
+            rect.y = [2]
+        with self.assertRaises(TypeError):
+            rect.y = (2,)
+        with self.assertRaises(TypeError):
+            rect.y = {2, 3}
+        with self.assertRaises(TypeError):
+            rect.y = (2.0)
+        with self.assertRaises(ValueError):
+            rect.y = (-1)
+
+    def test_validate_int(self):
+        """ Tests the validate_int method
+        """
+        rect = Rectangle(1, 2, 3, 4)
+        with self.assertRaises(TypeError):
+            rect.validate_int()
+        with self.assertRaises(TypeError):
+            rect.validate_int("x")
+        with self.assertRaises(TypeError):
+            rect.validate_int("x", '3')
+        with self.assertRaises(TypeError):
+            rect.validate_int("x", [3])
+        with self.assertRaises(TypeError):
+            rect.validate_int("x", (3,))
+        with self.assertRaises(TypeError):
+            rect.validate_int("x", {3})
+        with self.assertRaises(TypeError):
+            rect.validate_int("x", 3.0)
+        with self.assertRaises(TypeError):
+            rect.validate_int("x", None)
+
+    def test_validate_ge_zero(self):
+        """ Tests the validate_ge_zero method
+        """
+        rect = Rectangle(1, 2, 3, 4)
+        with self.assertRaises(TypeError):
+            rect.validate_ge_zero()
+        with self.assertRaises(TypeError):
+            rect.validate_ge_zero("y")
+        with self.assertRaises(ValueError):
+            rect.validate_ge_zero("y", -5)
+
+    def test_validate_gt_zero(self):
+        """ Tests the validate_gt_zero method
+        """
+        rect = Rectangle(1, 2, 3, 4)
+        with self.assertRaises(TypeError):
+            rect.validate_gt_zero()
+        with self.assertRaises(TypeError):
+            rect.validate_gt_zero("width")
+        with self.assertRaises(ValueError):
+            rect.validate_gt_zero("width", 0)
+        with self.assertRaises(ValueError):
+            rect.validate_gt_zero("width", -5)
