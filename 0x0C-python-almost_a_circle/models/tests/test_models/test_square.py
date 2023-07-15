@@ -31,6 +31,8 @@ class TestRectangle(TestCase):
         self.assertEqual(square.id, 1)
         self.assertEqual(square.width, 4)
         self.assertEqual(square.height, 4)
+        self.assertEqual(square.size, 4)
+        self.assertEqual(square.size, square.width)
         self.assertEqual(square.x, 0)
         self.assertEqual(square.y, 0)
 
@@ -47,6 +49,32 @@ class TestRectangle(TestCase):
 
         with self.assertRaises(TypeError):
             square1 = Square()
+
+    def test_size(self):
+        """ Tests the getter and setter methods for Square size
+        """
+        sq = Square(5, id=76)
+
+        self.assertEqual(sq.size, 5)
+        sq.size = 1
+        self.assertEqual(sq.size, 1)
+
+        with self.assertRaises(TypeError):
+            sq.size = None
+        with self.assertRaises(TypeError):
+            sq.size = '2'
+        with self.assertRaises(TypeError):
+            sq.size = [2]
+        with self.assertRaises(TypeError):
+            sq.size = (2,)
+        with self.assertRaises(TypeError):
+            sq.size = {2, 3}
+        with self.assertRaises(TypeError):
+            sq.size = (2.0)
+        with self.assertRaises(ValueError):
+            sq.size = (0)
+        with self.assertRaises(ValueError):
+            sq.size = (-1)
 
     def test_area(self):
         """ Tests the area() method that returns the area
