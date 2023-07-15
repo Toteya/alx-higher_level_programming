@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """ Unittest for rectangle module
 """
-import unittest
+from unittest import TestCase
+from unittest.mock import patch
+from io import StringIO
 from models.rectangle import Rectangle
 from models.base import Base
 
 
-class TestRectangle(unittest.TestCase):
+class TestRectangle(TestCase):
     """ Tests the Rectangle class and its
     methods
     """
@@ -179,7 +181,7 @@ class TestRectangle(unittest.TestCase):
             rect.validate_gt_zero("width", -5)
 
     def test_area(self):
-        """ Tests the area method that returns the area
+        """ Tests the area() method that returns the area
         of a Rectangle instance
         """
         rect = Rectangle(2, 4, 0, 0)
@@ -187,3 +189,23 @@ class TestRectangle(unittest.TestCase):
 
         rect.width = 4
         self.assertEqual(rect.area(), 16)
+
+    def test_display(self):
+        """ Tests the display() method that prints a Rectangle to stdout
+        """
+        rect = Rectangle(1, 1)
+        expected_out = "#\n"
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            rect.display()
+            self.assertEqual(fake_out.getvalue(), expected_out)
+
+        rect = Rectangle(2, 4)
+        expected_out = "\
+##\n\
+##\n\
+##\n\
+##\n"
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            rect.display()
+            self.assertEqual(fake_out.getvalue(), expected_out)
