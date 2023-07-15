@@ -146,3 +146,36 @@ class TestRectangle(TestCase):
         with patch('sys.stdout', new=StringIO()) as fake_out:
             print(sq2)
             self.assertEqual(fake_out.getvalue().strip(), sq2_out)
+
+    def test_update(self):
+        """ Tests the update method that updates the attributes of a
+        Square instance
+        """
+        sq = Square(3, id=75)
+        self.assertEqual(sq.__str__(), "[Square] (75) 0/0 - 3")
+        sq.update(83, 4, 1, 2)
+        self.assertEqual(sq.__str__(), "[Square] (83) 1/2 - 4")
+        sq.update(90)
+        self.assertEqual(sq.__str__(), "[Square] (90) 1/2 - 4")
+        sq.update(90, 2)
+        self.assertEqual(sq.__str__(), "[Square] (90) 1/2 - 2")
+        sq.update(90, 2, 3)
+        self.assertEqual(sq.__str__(), "[Square] (90) 3/2 - 2")
+        sq.update(90, 2, 3, 0)
+        self.assertEqual(sq.__str__(), "[Square] (90) 3/0 - 2")
+        sq.update(None)
+        self.assertEqual(sq.__str__(), "[Square] (None) 3/0 - 2")
+        sq.update('A')
+        self.assertEqual(sq.__str__(), "[Square] (A) 3/0 - 2")
+        sq.update(90, id=88)
+        self.assertEqual(sq.__str__(), "[Square] (90) 3/0 - 2")
+        sq.update(90, 7, 5, id=88, size=3)
+        self.assertEqual(sq.__str__(), "[Square] (90) 5/0 - 7")
+        sq.update(id=88, size=2)
+        self.assertEqual(sq.__str__(), "[Square] (88) 5/0 - 2")
+        sq.update(id=88, size=4, x=1, y=1)
+        self.assertEqual(sq.__str__(), "[Square] (88) 1/1 - 4")
+        sq.update(x=2, y=2)
+        self.assertEqual(sq.__str__(), "[Square] (88) 2/2 - 4")
+        with self.assertRaises(AttributeError):
+            sq.update(id=8, name=88)

@@ -30,3 +30,27 @@ class Square(Rectangle):
         Square object
         """
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
+
+    def update(self, *args, **kwargs):
+        """ Updates the Rectangle instance attributes
+        arg 1: id
+        arg 2: size
+        arg 3: x
+        arg 4: y
+        """
+        if len(args) == 0:
+            if kwargs is not None:
+                for key, value in kwargs.items():
+                    if hasattr(self, key):
+                        setattr(self, key, value)
+                    else:
+                        raise AttributeError("'Square' \
+object has no attribute '{key}'")
+            return
+        try:
+            self.id = args[0]
+            self.size = args[1]
+            self.x = args[2]
+            self.y = args[3]
+        except IndexError:
+            pass
