@@ -106,3 +106,23 @@ class Rectangle(Base):
         """ Returns a string representation of the Rectangle instance
         """
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+
+    def update(self, *args):
+        """ Updates the Rectangle instance attributes
+        arg 1: id
+        arg 2: width
+        arg 3: height
+        arg 4: x
+        arg 5: y
+        """
+        if not args:
+            return
+        try:
+            self.id = args[0]
+            self.width = args[1]
+            self.height = args[2]
+            self.x = args[3]
+            self.y = args[4]
+        except IndexError:
+            pass
+

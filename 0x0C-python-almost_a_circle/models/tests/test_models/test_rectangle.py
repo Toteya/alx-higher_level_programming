@@ -253,3 +253,34 @@ class TestRectangle(TestCase):
         with patch('sys.stdout', new=StringIO()) as fake_out:
             print(rect2)
             self.assertEqual(fake_out.getvalue().strip(), rect2_out)
+
+    def test_update(self):
+        """ Tests the update method that updates the attributes of a
+        Rectangle instance
+        """
+        rect = Rectangle(3, 3, id=75)
+        self.assertEqual(rect.__str__(), "[Rectangle] (75) 0/0 - 3/3")
+
+        rect.update(83, 4, 4, 1, 2)
+        self.assertEqual(rect.__str__(), "[Rectangle] (83) 1/2 - 4/4")
+
+        rect.update(90)
+        self.assertEqual(rect.__str__(), "[Rectangle] (90) 1/2 - 4/4")
+
+        rect.update(90, 2)
+        self.assertEqual(rect.__str__(), "[Rectangle] (90) 1/2 - 2/4")
+
+        rect.update(90, 2, 3)
+        self.assertEqual(rect.__str__(), "[Rectangle] (90) 1/2 - 2/3")
+
+        rect.update(90, 2, 3, 0)
+        self.assertEqual(rect.__str__(), "[Rectangle] (90) 0/2 - 2/3")
+
+        rect.update(90, 2, 3, 0, 1)
+        self.assertEqual(rect.__str__(), "[Rectangle] (90) 0/1 - 2/3")
+
+        rect.update(None)
+        self.assertEqual(rect.__str__(), "[Rectangle] (None) 0/1 - 2/3")
+
+        rect.update('A')
+        self.assertEqual(rect.__str__(), "[Rectangle] (A) 0/1 - 2/3")
