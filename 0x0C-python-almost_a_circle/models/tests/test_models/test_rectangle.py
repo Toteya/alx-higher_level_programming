@@ -209,3 +209,23 @@ class TestRectangle(TestCase):
         with patch('sys.stdout', new=StringIO()) as fake_out:
             rect.display()
             self.assertEqual(fake_out.getvalue(), expected_out)
+
+    def test_str(self):
+        """ Tests the Rectangle's __str__ method
+        """
+        rect1 = Rectangle(1, 2, 3, 4, 5)
+        rect2 = Rectangle(4, 4, 2)
+
+        rect1_out = "[Rectangle] (5) 3/4 - 1/2"
+        rect2_out = "[Rectangle] ({}) 2/0 - 4/4".format(rect2.id)
+
+        self.assertEqual(rect1.__str__(), rect1_out)
+        # self.assertEqual(rect2.__str__(), rect2_out)
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            print(rect1)
+            self.assertEqual(fake_out.getvalue().strip(), rect1_out)
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            print(rect2)
+            self.assertEqual(fake_out.getvalue().strip(), rect2_out)
