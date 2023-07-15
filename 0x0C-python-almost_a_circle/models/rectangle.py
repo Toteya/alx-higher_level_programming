@@ -100,14 +100,15 @@ class Rectangle(Base):
         """
         rect_display = "\n" * self.y
         rect_display += (" " * self.x + "#" * self.width + '\n') * self.height
-        print(rect_display, end = "")
+        print(rect_display, end="")
 
     def __str__(self):
         """ Returns a string representation of the Rectangle instance
         """
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+        return f"[Rectangle] \
+({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ Updates the Rectangle instance attributes
         arg 1: id
         arg 2: width
@@ -115,7 +116,14 @@ class Rectangle(Base):
         arg 4: x
         arg 5: y
         """
-        if not args:
+        if len(args) == 0:
+            if kwargs is not None:
+                for key, value in kwargs.items():
+                    if hasattr(self, key):
+                        setattr(self, key, value)
+                    else:
+                        raise AttributeError("'Rectangle' \
+object has no attribute '{key}'")
             return
         try:
             self.id = args[0]
@@ -125,4 +133,3 @@ class Rectangle(Base):
             self.y = args[4]
         except IndexError:
             pass
-

@@ -284,3 +284,21 @@ class TestRectangle(TestCase):
 
         rect.update('A')
         self.assertEqual(rect.__str__(), "[Rectangle] (A) 0/1 - 2/3")
+
+        rect.update(90, id=88)
+        self.assertEqual(rect.__str__(), "[Rectangle] (90) 0/1 - 2/3")
+
+        rect.update(90, 7, 5, id=88, width=3, height=2)
+        self.assertEqual(rect.__str__(), "[Rectangle] (90) 0/1 - 7/5")
+
+        rect.update(id=88, width=3, height=2)
+        self.assertEqual(rect.__str__(), "[Rectangle] (88) 0/1 - 3/2")
+
+        rect.update(id=88, width=3, height=2, x=3, y=0)
+        self.assertEqual(rect.__str__(), "[Rectangle] (88) 3/0 - 3/2")
+
+        rect.update(x=2, y=2)
+        self.assertEqual(rect.__str__(), "[Rectangle] (88) 2/2 - 3/2")
+
+        with self.assertRaises(AttributeError):
+            rect.update(name=88)
