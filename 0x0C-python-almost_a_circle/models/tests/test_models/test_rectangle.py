@@ -193,22 +193,46 @@ class TestRectangle(TestCase):
     def test_display(self):
         """ Tests the display() method that prints a Rectangle to stdout
         """
-        rect = Rectangle(1, 1)
-        expected_out = "#\n"
+        rect1 = Rectangle(1, 1)
+        rect1_exp_out = "#\n"
 
-        with patch('sys.stdout', new=StringIO()) as fake_out:
-            rect.display()
-            self.assertEqual(fake_out.getvalue(), expected_out)
-
-        rect = Rectangle(2, 4)
-        expected_out = "\
+        rect2 = Rectangle(2, 4)
+        rect2_exp_out = "\
 ##\n\
 ##\n\
 ##\n\
 ##\n"
+
+        rect3 = Rectangle(3, 4, 2)
+        rect3_exp_out = "\
+  ###\n\
+  ###\n\
+  ###\n\
+  ###\n"
+
+        rect4 = Rectangle(3, 3, 1, 2)
+        rect4_exp_out = "\
+\n\
+\n\
+ ###\n\
+ ###\n\
+ ###\n"
+
         with patch('sys.stdout', new=StringIO()) as fake_out:
-            rect.display()
-            self.assertEqual(fake_out.getvalue(), expected_out)
+            rect1.display()
+            self.assertEqual(fake_out.getvalue(), rect1_exp_out)
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            rect2.display()
+            self.assertEqual(fake_out.getvalue(), rect2_exp_out)
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            rect3.display()
+            self.assertEqual(fake_out.getvalue(), rect3_exp_out)
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            rect4.display()
+            self.assertEqual(fake_out.getvalue(), rect4_exp_out)
 
     def test_str(self):
         """ Tests the Rectangle's __str__ method
