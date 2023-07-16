@@ -2,8 +2,9 @@
 """ Unittest for rectangle module
 """
 from unittest import TestCase
-from unittest.mock import patch
+from unittest.mock import patch, mock_open
 from io import StringIO
+import json
 from models.rectangle import Rectangle
 from models.base import Base
 
@@ -300,3 +301,25 @@ class TestRectangle(TestCase):
         rect = Rectangle(5, 4)
         rect_dict = {'x': 0, 'y': 0, 'id': rect.id, 'height': 4, 'width': 5}
         self.assertEqual(rect.to_dictionary(), rect_dict)
+
+    def test_to_json_string(self):
+        """ Tests the static method that returns a JSON string representation
+        of a list of dictionaries representing rectangles
+        """
+        rect = Rectangle(4, 3, 1, 2, id=77)
+        json_str = Rectangle.to_json_string([rect.to_dictionary()])
+        exp_out = '[{"id": 77, "width": 4, "height": 3, "x": 1, "y": 2}]'
+        self.assertTrue(isinstance(json_str, str))
+        self.assertEqual(exp_out, json_str)
+
+    def test_save_to_file(self):
+        """ Tests the class method `save_to_file` which saves the JSON
+        representation of a list of Rectangle instances to a file
+        """
+        r1 = Rectangle(4, 5)
+        r2 = Rectangle(2, 6, 1, 1, id=6)
+        list_objs = [r1, r2]
+        Rectangle.save_to_file(list_objs)
+
+        filename = ""
+        with patch('builtins.open', mock_open(read_datanew=StringIO) as fake_out

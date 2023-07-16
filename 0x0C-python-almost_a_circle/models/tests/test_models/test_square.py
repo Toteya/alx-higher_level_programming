@@ -191,3 +191,13 @@ class TestRectangle(TestCase):
         sq = Square(5, 4)
         sq_dict = {'id': sq.id, 'x': 4, 'size': 5, 'y': 0}
         self.assertEqual(sq.to_dictionary(), sq_dict)
+
+    def test_to_json_string(self):
+        """ Tests the static method that returns a JSON string representation
+        of a list of dictionaries representing Square instances
+        """
+        sq = Square(3, id=61)
+        json_str = Square.to_json_string([sq.to_dictionary()])
+        exp_out = '[{"id": 61, "x": 0, "y": 0, "size": 3}]'
+        self.assertTrue(isinstance(json_str, str))
+        self.assertEqual(exp_out, json_str)
