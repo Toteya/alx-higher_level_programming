@@ -179,3 +179,15 @@ class TestRectangle(TestCase):
         self.assertEqual(sq.__str__(), "[Square] (88) 2/2 - 4")
         with self.assertRaises(AttributeError):
             sq.update(id=8, name=88)
+
+    def test_to_dictionary(self):
+        """ Tests to_dictionary() method that returns a dictionary
+        representation of the Square
+        """
+        sq = Square(8, 2, 3, 43)
+        sq_dict = {'id': 43, 'x': 2, 'size': 8, 'y': 3}
+        self.assertEqual(sq.to_dictionary(), sq_dict)
+
+        sq = Square(5, 4)
+        sq_dict = {'id': sq.id, 'x': 4, 'size': 5, 'y': 0}
+        self.assertEqual(sq.to_dictionary(), sq_dict)

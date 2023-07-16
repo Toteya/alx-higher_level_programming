@@ -54,3 +54,9 @@ object has no attribute '{key}'")
             self.y = args[3]
         except IndexError:
             pass
+
+    def to_dictionary(self):
+        """ Returns a dictionary representation of the Square
+        """
+        _dict = {'id': self.id, 'x': self.x, 'size': self.size, 'y': self.y}
+        return _dict
