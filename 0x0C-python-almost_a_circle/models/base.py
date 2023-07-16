@@ -32,7 +32,7 @@ class Base:
         a file
         """
         filename = f"{cls.__name__}.json"
-        list_dicts = [obj.to_dictionary() for obj in list_obj]
-        json_dicts = to_json_string(list_dicts)
-        with open(filename, mode="w", encoding="uttf-8") as a_file:
-            json.dumps(a_file, json_dicts)
+        list_dicts = [obj.to_dictionary() for obj in list_objs]
+        json_dicts = cls.to_json_string(list_dicts)
+        with open(filename, mode="w", encoding="utf-8") as a_file:
+            a_file.write(json_dicts)

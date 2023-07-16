@@ -312,14 +312,31 @@ class TestRectangle(TestCase):
         self.assertTrue(isinstance(json_str, str))
         self.assertEqual(exp_out, json_str)
 
+        json_str = Rectangle.to_json_string([])
+        self.assertEqual('[]', json_str)
+
+        #json_str = Rectangle.to_json_string()
+        #self.assertEqual('[]', json_str)
+
     def test_save_to_file(self):
         """ Tests the class method `save_to_file` which saves the JSON
         representation of a list of Rectangle instances to a file
         """
-        r1 = Rectangle(4, 5)
+        r1 = Rectangle(4, 5, id=4)
         r2 = Rectangle(2, 6, 1, 1, id=6)
         list_objs = [r1, r2]
-        Rectangle.save_to_file(list_objs)
+        exp_out = '[{"id": 4, "width": 4, "height": 5, "x": 0, "y": 0}, \
+                {"id": 6, "width": 2, "height": 6, "x": 1, "y": 1}]'
+        with patch('builtins.open', create=True) as fake_file:
+            Rectangle.save_to_file(list_objs)
+            fake_file.assert_called_once_with("Rectangle.json", mode="w", encoding="utf-8")
+            # fake_file.return_value.write.assert_called_once_with(exp_out)
 
-        filename = ""
-        with patch('builtins.open', mock_open(read_datanew=StringIO) as fake_out
+            
+            # content = fake_file.return_value.read.return_value
+            # self.assertEqual(content, exp_out)
+    
+        list_objs = []
+        with patch('builtins.open', create=True) as fake_file:
+            Rectangle.save_to_file(list_objs)
+            fake_file.assert_called_once_with("Rectangle.json", mode="w", encoding="utf-8")
