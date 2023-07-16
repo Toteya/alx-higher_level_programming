@@ -14,6 +14,11 @@ class TestRectangle(TestCase):
     methods
     """
 
+    def setUp(self):
+        """ Sets up the initial conditions for each test
+        """
+        Base._Base__nb_objects = 0
+
     def test_Rectangle(self):
         """ Tests the Rectangle instantiation
         """

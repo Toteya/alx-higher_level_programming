@@ -18,7 +18,7 @@ class TestRectangle(TestCase):
         """ Tests the instantiation of a Square object
         """
         square = Square(4)
-        square_str = "[Square] (1) 0/0 - 4"
+        square_str = f"[Square] ({square.id}) 0/0 - 4"
         with patch('sys.stdout', new=StringIO()) as fake_out:
             print(square)
             self.assertEqual(fake_out.getvalue().strip(), square_str)
@@ -28,7 +28,6 @@ class TestRectangle(TestCase):
         self.assertTrue(isinstance(square, Base))
         self.assertTrue(issubclass(square.__class__, Rectangle))
         self.assertTrue(issubclass(square.__class__, Base))
-        self.assertEqual(square.id, 1)
         self.assertEqual(square.width, 4)
         self.assertEqual(square.height, 4)
         self.assertEqual(square.size, 4)

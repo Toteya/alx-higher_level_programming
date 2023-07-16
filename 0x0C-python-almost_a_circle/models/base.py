@@ -71,3 +71,6 @@ class Base:
             dict_list = json.loads(json_list)
             obj_list = [cls(**obj_dict) for obj_dict in dict_list]
         return obj_list
+
+    # @classmethod
+
