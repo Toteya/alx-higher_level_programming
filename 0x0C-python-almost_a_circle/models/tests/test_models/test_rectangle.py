@@ -288,3 +288,15 @@ class TestRectangle(TestCase):
         self.assertEqual(rect.__str__(), "[Rectangle] (88) 2/2 - 3/2")
         with self.assertRaises(AttributeError):
             rect.update(name=88)
+
+    def test_to_dictionary(self):
+        """ Tests to_dictionary() method that returns a dictionary
+        representation of the Rectangle
+        """
+        rect = Rectangle(8, 6, 2, 2, 54)
+        rect_dict = {'x': 2, 'y': 2, 'id': 54, 'height': 6, 'width': 8}
+        self.assertEqual(rect.to_dictionary(), rect_dict)
+
+        rect = Rectangle(5, 4)
+        rect_dict = {'x': 0, 'y': 0, 'id': rect.id, 'height': 4, 'width': 5}
+        self.assertEqual(rect.to_dictionary(), rect_dict)
