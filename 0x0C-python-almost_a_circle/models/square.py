@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ square module """
-from models.base import Base
 from models.rectangle import Rectangle
 
 

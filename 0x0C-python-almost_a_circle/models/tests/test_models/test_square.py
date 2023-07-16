@@ -201,3 +201,26 @@ class TestRectangle(TestCase):
         exp_out = '[{"id": 61, "x": 0, "y": 0, "size": 3}]'
         self.assertTrue(isinstance(json_str, str))
         self.assertEqual(exp_out, json_str)
+
+    def test_create(self):
+        """ Tests the class method create() that create and returns
+        a new Square instance
+        """
+        sq1 = Square(6, 1, 1, 37)
+        self.assertTrue(isinstance(sq1, Square))
+        self.assertTrue(isinstance(sq1, Rectangle))
+        sq2 = Square.create(**sq1.to_dictionary())
+        self.assertTrue(isinstance(sq2, Square))
+        self.assertEqual(37, sq2.id)
+        self.assertEqual(sq2.to_dictionary(), {'id': 37, 'x': 1, 'y': 1,
+                                               'size': 6})
+        self.assertFalse(sq1 is sq2)
+        self.assertFalse(sq1 == sq2)
+        self.assertTrue(sq1.to_dictionary() == sq2.to_dictionary())
+
+        with self.assertRaises(TypeError):
+            Square.create(4, id=3, x=1, y=0)
+
+        sq = Square.create(id=3, x=0, y=0)
+        self.assertEqual(sq.to_dictionary(), {'id': 3, 'x': 0, 'y': 0,
+                                              'size': 1})

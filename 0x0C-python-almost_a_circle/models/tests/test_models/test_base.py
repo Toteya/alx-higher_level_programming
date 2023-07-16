@@ -4,6 +4,8 @@
 import unittest
 import json
 from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBase(unittest.TestCase):
@@ -40,3 +42,22 @@ class TestBase(unittest.TestCase):
         json_str = Base.to_json_string([])
         self.assertEqual('[]', json_str)
         self.assertTrue(isinstance(json_str, str))
+
+    def test_create(self):
+        """ Tests the class method create() that create and returns
+        a new instance of the subclasses of Base
+        """
+        r1 = Rectangle(4, 6, 1, 1, 13)
+        self.assertTrue(isinstance(r1, Rectangle))
+        r1_dict = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dict)
+        self.assertTrue(isinstance(r2, Rectangle))
+        self.assertEqual(13, r2.id)
+        self.assertEqual(r2.to_dictionary(), {'id': 13, 'x': 1, 'y': 1,
+                                              'width': 4, 'height': 6})
+        self.assertFalse(r1 is r2)
+        self.assertFalse(r1 == r2)
+        self.assertTrue(r1.to_dictionary() == r2.to_dictionary())
+
+        with self.assertRaises(TypeError):
+            Rectangle.create(2, 3, id=3, x=1, y=0)
