@@ -10,3 +10,8 @@ if __name__ == "__main__":
 
     with open("Rectangle.json", "r") as file:
         print(file.read())
+    
+    Rectangle.save_to_file([r2])
+
+    with open("Rectangle.json", "r") as file:
+        print(file.read())

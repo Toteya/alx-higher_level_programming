@@ -315,8 +315,8 @@ class TestRectangle(TestCase):
         json_str = Rectangle.to_json_string([])
         self.assertEqual('[]', json_str)
 
-        #json_str = Rectangle.to_json_string()
-        #self.assertEqual('[]', json_str)
+        # json_str = Rectangle.to_json_string()
+        # self.assertEqual('[]', json_str)
 
     def test_save_to_file(self):
         """ Tests the class method `save_to_file` which saves the JSON
@@ -329,14 +329,39 @@ class TestRectangle(TestCase):
                 {"id": 6, "width": 2, "height": 6, "x": 1, "y": 1}]'
         with patch('builtins.open', create=True) as fake_file:
             Rectangle.save_to_file(list_objs)
-            fake_file.assert_called_once_with("Rectangle.json", mode="w", encoding="utf-8")
+            fake_file.assert_called_once_with("Rectangle.json",
+                                              mode="w", encoding="utf-8")
             # fake_file.return_value.write.assert_called_once_with(exp_out)
 
-            
             # content = fake_file.return_value.read.return_value
             # self.assertEqual(content, exp_out)
-    
+
         list_objs = []
         with patch('builtins.open', create=True) as fake_file:
             Rectangle.save_to_file(list_objs)
-            fake_file.assert_called_once_with("Rectangle.json", mode="w", encoding="utf-8")
+            fake_file.assert_called_once_with("Rectangle.json", mode="w",
+                                              encoding="utf-8")
+
+    def test_from_json_string(self):
+        """ Test the method that returns a list of dictionaries
+        from JSON string representation
+        """
+        r1 = Rectangle(4, 5, id=4)
+        json_str = Rectangle.to_json_string([r1.to_dictionary()])
+        self.assertTrue(isinstance(json_str, str))
+
+        json_list = Rectangle.from_json_string(json_str)
+        self.assertTrue(isinstance(json_list, list))
+        self.assertEqual(json_list, [{'id': 4, 'width': 4, 'height': 5,
+                                     'x': 0, 'y': 0}])
+
+        json_list = Rectangle.from_json_string("")
+        self.assertTrue(isinstance(json_list, list))
+        self.assertEqual(json_list, [])
+
+        json_list = Rectangle.from_json_string(None)
+        self.assertTrue(isinstance(json_list, list))
+        self.assertEqual(json_list, [])
+
+        with self.assertRaises(TypeError):
+            json_list = Rectangle.from_json_string()
