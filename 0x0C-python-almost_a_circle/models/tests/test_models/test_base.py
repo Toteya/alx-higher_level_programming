@@ -2,7 +2,8 @@
 """ Unittest for Base class
 """
 import unittest
-from base import Base
+import json
+from models.base import Base
 
 
 class TestBase(unittest.TestCase):
@@ -27,3 +28,11 @@ class TestBase(unittest.TestCase):
         self.assertTrue(isinstance(b3, Base))
         with self.assertRaises(AttributeError):
             print(Base.__nb_objects)
+
+    def test_to_json_string(self):
+        """ Test the to_json_string static method which returns a JSON
+        string representation of the list of dictionaries given
+        """
+        list_dicts = [{'id': 1, 'size': 4}, {'x': 2, 'y': 4}]
+        json_str = Base.to_json_string(list_dicts)
+        self.assertEqual('[{"id": 1, "size": 4}, {"x": 2, "y": 4}]', json_str)

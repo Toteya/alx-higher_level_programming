@@ -137,8 +137,6 @@ object has no attribute '{key}'")
     def to_dictionary(self):
         """ Returns a dictionary representation of the Rectangle
         """
-        _dict = {
-            'x': self.x, 'y': self.y, 'id': self.id,
-            'height': self.height, 'width': self.width
-        }
+        _dict = {key.split("_")[-1]: value for key, value in
+                 self.__dict__.items()}
         return _dict

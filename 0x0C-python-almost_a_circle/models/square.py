@@ -58,5 +58,9 @@ object has no attribute '{key}'")
     def to_dictionary(self):
         """ Returns a dictionary representation of the Square
         """
-        _dict = {'id': self.id, 'x': self.x, 'size': self.size, 'y': self.y}
+        _dict = {key.split("_")[-1]: value for key, value in
+                 self.__dict__.items()}
+        _dict['size'] = _dict['width']
+        del _dict['width']
+        del _dict['height']
         return _dict
