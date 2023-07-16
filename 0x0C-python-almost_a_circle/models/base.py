@@ -56,3 +56,18 @@ class Base:
             obj = cls(1)
         obj.update(**dictionary)
         return obj
+
+    @classmethod
+    def load_from_file(cls):
+        """ returns a list of instances from a file as determined by
+        the file to load depends on the class e.g. Rectangle.json
+        i.e. filename == <Class name>.json
+        """
+        filename = f"{cls.__name__}.json"
+        dict_list = []
+        obj_list = []
+        with open(filename, mode="r", encoding="utf-8") as a_file:
+            json_list = a_file.read()
+            dict_list = json.loads(json_list)
+            obj_list = [cls(**obj_dict) for obj_dict in dict_list]
+        return obj_list

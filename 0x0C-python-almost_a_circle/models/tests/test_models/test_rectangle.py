@@ -372,8 +372,8 @@ class TestRectangle(TestCase):
         """
         r1 = Rectangle(4, 6, 1, 1, 13)
         self.assertTrue(isinstance(r1, Rectangle))
-        r1_dict = r1.to_dictionary()
-        r2 = Rectangle.create(**r1_dict)
+
+        r2 = Rectangle.create(**r1.to_dictionary())
         self.assertTrue(isinstance(r2, Rectangle))
         self.assertEqual(13, r2.id)
         self.assertEqual(r2.to_dictionary(), {'id': 13, 'x': 1, 'y': 1,
@@ -384,3 +384,6 @@ class TestRectangle(TestCase):
 
         with self.assertRaises(TypeError):
             Rectangle.create(2, 3, id=3, x=1, y=0)
+
+    def test_load_from_file(cls):
+        pass
