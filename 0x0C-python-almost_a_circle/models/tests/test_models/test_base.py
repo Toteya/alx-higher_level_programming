@@ -36,3 +36,6 @@ class TestBase(unittest.TestCase):
         list_dicts = [{'id': 1, 'size': 4}, {'x': 2, 'y': 4}]
         json_str = Base.to_json_string(list_dicts)
         self.assertEqual('[{"id": 1, "size": 4}, {"x": 2, "y": 4}]', json_str)
+
+        json_str = Base.to_json_string([])
+        self.assertEqual('[]', json_str)
