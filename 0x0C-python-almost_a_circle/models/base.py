@@ -3,6 +3,7 @@
 Contains Base class
 """
 import json
+import csv
 
 
 class Base:
@@ -72,5 +73,37 @@ class Base:
             obj_list = [cls(**obj_dict) for obj_dict in dict_list]
         return obj_list
 
-    # @classmethod
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ Serializes and writes object instances into CSV format
+        """
+        filename = f"{cls.__name__}.csv"
+        with open(filename, mode="w", encoding="utf-8", newline="") as a_file:
+            if not list_objs:
+                raise open.Break
 
+            fields = list_objs[0].to_dictionary().keys()
+
+            writer = csv.DictWriter(a_file, fieldnames=fields)
+            writer.writeheader()
+            for obj in list_objs:
+                writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ Reads and deserializes object instances from a CSV
+        format file
+        """
+        filename = f"{cls.__name__}.csv"
+        obj_list = []
+        with open(filename, "r", encoding="utf-8") as a_file:
+            csv_file = csv.DictReader(a_file)
+            dict_list = [dict(obj_dict) for obj_dict in csv_file]
+
+            for obj_dict in dict_list:
+                for key, value in obj_dict.items():
+                    obj_dict[key] = int(value)
+
+            obj_list = [cls(**obj_dict) for obj_dict in dict_list]
+
+        return obj_list
