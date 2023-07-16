@@ -39,3 +39,4 @@ class TestBase(unittest.TestCase):
 
         json_str = Base.to_json_string([])
         self.assertEqual('[]', json_str)
+        self.assertTrue(isinstance(json_str, str))
