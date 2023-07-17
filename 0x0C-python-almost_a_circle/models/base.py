@@ -4,6 +4,7 @@ Contains Base class
 """
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -107,3 +108,12 @@ class Base:
             obj_list = [cls(**obj_dict) for obj_dict in dict_list]
 
         return obj_list
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """ Opens a window and draws all the Rectangles and Squares
+        """
+        tw = turtle.Screen()
+        tw.setup(400, 400)
+        sc.bgcolor("blue")
+
