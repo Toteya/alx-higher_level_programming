@@ -391,4 +391,6 @@ class TestRectangle(TestCase):
             Rectangle.create(2, 3, id=3, x=1, y=0)
 
     def test_load_from_file(cls):
+        """ Tests the methods that loads the objects from the file
+        """
         pass

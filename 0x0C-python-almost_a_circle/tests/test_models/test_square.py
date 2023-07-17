@@ -14,6 +14,12 @@ class TestRectangle(TestCase):
     methods
     """
 
+    def setUp(self):
+        """ Sets up the initial conditions for each test
+        case
+        """
+        Base._Base__nb_objects = 0
+
     def test_Square(self):
         """ Tests the instantiation of a Square object
         """
@@ -28,6 +34,7 @@ class TestRectangle(TestCase):
         self.assertTrue(isinstance(square, Base))
         self.assertTrue(issubclass(square.__class__, Rectangle))
         self.assertTrue(issubclass(square.__class__, Base))
+        self.assertEqual(square.id, 1)
         self.assertEqual(square.width, 4)
         self.assertEqual(square.height, 4)
         self.assertEqual(square.size, 4)
@@ -39,9 +46,9 @@ class TestRectangle(TestCase):
         square_str = f"[Square] ({square.id}) 1/0 - 4"
         self.assertEqual(square.__str__(), square_str)
 
-        square = Square(5, 2, 1)
-        square_str = f"[Square] ({square.id}) 2/1 - 5"
-        self.assertEqual(square.__str__(), square_str)
+        square1 = Square(5, 2, 1)
+        square1_str = f"[Square] (2) 2/1 - 5"
+        self.assertEqual(square1.__str__(), square1_str)
 
         square = Square(5, 2, 1, 56)
         self.assertEqual(square.__str__(), "[Square] (56) 2/1 - 5")
@@ -200,6 +207,31 @@ class TestRectangle(TestCase):
         exp_out = '[{"id": 61, "x": 0, "y": 0, "size": 3}]'
         self.assertTrue(isinstance(json_str, str))
         self.assertEqual(exp_out, json_str)
+
+    def test_from_json_string(self):
+        """ Test the method that returns a list of dictionaries
+        from JSON string representation
+        """
+        sq = Square(4)
+        json_str = Square.to_json_string([sq.to_dictionary()])
+        self.assertTrue(isinstance(json_str, str))
+
+        json_list = Square.from_json_string(json_str)
+        self.assertTrue(isinstance(json_list, list))
+        self.assertTrue(isinstance(json_list[0], dict))
+        self.assertEqual(json_list, [{'id': 1, 'size': 4,
+                                     'x': 0, 'y': 0}])
+
+        json_list = Square.from_json_string("")
+        self.assertTrue(isinstance(json_list, list))
+        self.assertEqual(json_list, [])
+
+        json_list = Square.from_json_string(None)
+        self.assertTrue(isinstance(json_list, list))
+        self.assertEqual(json_list, [])
+
+        with self.assertRaises(TypeError):
+            json_list = Square.from_json_string()
 
     def test_create(self):
         """ Tests the class method create() that create and returns
