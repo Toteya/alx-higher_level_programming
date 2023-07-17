@@ -69,9 +69,9 @@ class Base:
         dict_list = []
         obj_list = []
         with open(filename, mode="r", encoding="utf-8") as a_file:
-            json_list = a_file.read()
-            dict_list = json.loads(json_list)
-            obj_list = [cls(**obj_dict) for obj_dict in dict_list]
+            json_string = a_file.read()
+            dict_list = cls.from_json_string(json_string)
+            obj_list = [cls.create(**obj_dict) for obj_dict in dict_list]
         return obj_list
 
     @classmethod
