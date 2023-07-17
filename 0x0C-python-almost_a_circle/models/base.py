@@ -24,8 +24,8 @@ class Base:
         """ Returns the JSON string representation of the given
         list of dictionaries `list_dictionaries`
         """
-        if not list_dictionaries:
-            return json.dumps([])
+        if list_dictionaries is None:
+            return "[]"
         return json.dumps(list_dictionaries)
 
     @staticmethod
