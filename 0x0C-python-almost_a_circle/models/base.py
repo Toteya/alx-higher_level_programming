@@ -71,10 +71,13 @@ class Base:
         filename = f"{cls.__name__}.json"
         dict_list = []
         obj_list = []
-        with open(filename, mode="r", encoding="utf-8") as a_file:
-            json_string = a_file.read()
-            dict_list = cls.from_json_string(json_string)
-            obj_list = [cls.create(**obj_dict) for obj_dict in dict_list]
+        try:
+            with open(filename, mode="r", encoding="utf-8") as a_file:
+                json_string = a_file.read()
+                dict_list = cls.from_json_string(json_string)
+                obj_list = [cls.create(**obj_dict) for obj_dict in dict_list]
+        except FileNotFoundError:
+            pass
         return obj_list
 
     @classmethod
