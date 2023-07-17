@@ -117,3 +117,4 @@ class Base:
         tw.setup(400, 400)
         sc.bgcolor("blue")
 
+        turtle.done()
