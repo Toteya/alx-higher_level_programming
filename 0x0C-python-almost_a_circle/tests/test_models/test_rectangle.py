@@ -42,8 +42,26 @@ class TestRectangle(TestCase):
         rect3 = Rectangle(3, 4, id=98)
         self.assertEqual(rect3.id, 98)
 
-        with self.assertRaises(TypeError):
-            Rectangle()
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle('2', 4)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(2, '4')
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Rectangle(0, 4)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Rectangle(-2, 4)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            Rectangle(2, 0)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            Rectangle(2, -4)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(2, 3, '2', 1)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            Rectangle(2, 3, 2, '1')
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            Rectangle(2, 3, -1, 2)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            Rectangle(2, 3, 1, -5)
 
     def test_width(self):
         """ Tests getter and setter for Rectangle width
