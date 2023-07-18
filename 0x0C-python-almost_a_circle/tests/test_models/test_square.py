@@ -56,6 +56,21 @@ class TestRectangle(TestCase):
         with self.assertRaises(TypeError):
             square1 = Square()
 
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(0)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(-5)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square('5')
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(5, '2')
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            Square(5, 2, '1')
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            Square(5, -2)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            Square(5, 2, -1)
+
     def test_size(self):
         """ Tests the getter and setter methods for Square size
         """
