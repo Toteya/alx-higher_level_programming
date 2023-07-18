@@ -5,6 +5,7 @@ Contains Base class
 import json
 import csv
 import turtle
+import random
 
 
 class Base:
@@ -119,8 +120,53 @@ class Base:
     def draw(list_rectangles, list_squares):
         """ Opens a window and draws all the Rectangles and Squares
         """
-        tw = turtle.Screen()
-        tw.setup(400, 400)
-        sc.bgcolor("blue")
+        # my turtle
+        mt = turtle.Turtle()
+        mt.pensize(2)
+        mt.pencolor("red")
+        mt.fillcolor("green")
 
+        # set my screen
+        tw = turtle.Screen()
+        tw.setup(600, 600)
+        tw.bgcolor("pink")
+        # colormode allows me to set the color with (r,g,b)
+        # this allows me to randomise the colors
+        tw.colormode(255)
+
+        # set turtle starting position
+        mt.penup()
+        mt.backward(tw.window_width() / 2 - 10)
+        mt.right(90)
+        mt.forward(tw.window_height() / 4 - 20)
+        mt.left(90)
+
+        list_shapes = [list_rectangles, list_squares]
+
+        # get total width to allow correct sizing of drawings on the screen
+        total_width = 0
+        for shapes in list_shapes:
+            if shapes is not None:
+                for shape in shapes:
+                    total_width += shape.width
+
+        # ratio of screen to total_width allows to fit the shapes onto screen
+        size_ratio = (tw.window_width() - 20) / (total_width)
+
+        for shapes in list_shapes:
+            if shapes is not None:
+                for shape in shapes:
+                    rgb = tuple(random.choice(range(255)) for _ in range(3))
+                    mt.fillcolor(rgb)
+                    mt.pendown()
+                    mt.begin_fill()
+                    for _ in range(2):
+                        mt.forward(shape.width * size_ratio)
+                        mt.left(90)
+                        mt.forward(shape.height * size_ratio)
+                        mt.left(90)
+
+                    mt.end_fill()
+                    mt.penup()
+                    mt.forward(shape.width * size_ratio)
         turtle.done()
