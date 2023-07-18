@@ -270,3 +270,31 @@ class TestRectangle(TestCase):
         sq = Square.create(id=3, x=0, y=0)
         self.assertEqual(sq.to_dictionary(), {'id': 3, 'x': 0, 'y': 0,
                                               'size': 1})
+
+    def test_save_to_file(self):
+        """ Tests the class method `save_to_file` which saves the JSON
+        representation of a list of Square instances to a file
+        """
+        sq1 = Square(4)
+        sq2 = Square(6, 1, 1, id=32)
+        list_objs = [sq1, sq2]
+        exp_out = '[{"id": 1, "size": 4, "x": 0, "y": 0}, \
+                {"id": 32, "size": 6, "x": 1, "y": 1}]'
+
+        with patch('builtins.open', create=True) as my_mock:
+            Square.save_to_file(list_objs)
+            my_mock.assert_called_once_with("Square.json",
+                                            mode="w", encoding="utf-8")
+            # fake_file.return_value.write.assert_called_once_with(exp_out)
+
+        list_objs = []
+        with patch('builtins.open', create=True) as my_mock:
+            Square.save_to_file(list_objs)
+            my_mock.assert_called_once_with("Square.json", mode="w",
+                                            encoding="utf-8")
+
+        list_objs = None
+        with patch('builtins.open', create=True) as my_mock:
+            Square.save_to_file(list_objs)
+            my_mock.assert_called_once_with("Square.json", mode="w",
+                                            encoding="utf-8")

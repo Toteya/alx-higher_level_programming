@@ -350,20 +350,24 @@ class TestRectangle(TestCase):
         list_objs = [r1, r2]
         exp_out = '[{"id": 4, "width": 4, "height": 5, "x": 0, "y": 0}, \
                 {"id": 6, "width": 2, "height": 6, "x": 1, "y": 1}]'
-        with patch('builtins.open', create=True) as fake_file:
-            Rectangle.save_to_file(list_objs)
-            fake_file.assert_called_once_with("Rectangle.json",
-                                              mode="w", encoding="utf-8")
-            # fake_file.return_value.write.assert_called_once_with(exp_out)
 
-            # content = fake_file.return_value.read.return_value
-            # self.assertEqual(content, exp_out)
+        with patch('builtins.open', create=True) as my_mock:
+            Rectangle.save_to_file(list_objs)
+            my_mock.assert_called_once_with("Rectangle.json",
+                                            mode="w", encoding="utf-8")
+            # fake_file.return_value.write.assert_called_once_with(exp_out)
 
         list_objs = []
         with patch('builtins.open', create=True) as fake_file:
             Rectangle.save_to_file(list_objs)
-            fake_file.assert_called_once_with("Rectangle.json", mode="w",
-                                              encoding="utf-8")
+            my_mock.assert_called_once_with("Rectangle.json", mode="w",
+                                            encoding="utf-8")
+
+        list_objs = None
+        with patch('builtins.open', create=True) as fake_file:
+            Rectangle.save_to_file(list_objs)
+            my_mock.assert_called_once_with("Rectangle.json", mode="w",
+                                            encoding="utf-8")
 
     def test_from_json_string(self):
         """ Test the method that returns a list of dictionaries
