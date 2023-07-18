@@ -412,7 +412,18 @@ class TestRectangle(TestCase):
         with self.assertRaises(TypeError):
             Rectangle.create(2, 3, id=3, x=1, y=0)
 
-    def test_load_from_file(cls):
+    def test_load_from_file(self):
         """ Tests the methods that loads the objects from the file
         """
-        pass
+        file_content = '[{"id": 4, "width": 4, "height": 5, "x": 0, "y": 0}, \
+                         {"id": 6, "width": 2, "height": 6, "x": 1, "y": 1}]'
+
+        m_open = mock_open(read_data=file_content)
+        with patch("builtins.open", m_open):
+            reader = Rectangle.load_from_file()
+            self.assertTrue(isinstance(reader, list))
+
+        m_open = mock_open(read_data=None)
+        with patch("builtins.open", m_open):
+            reader = Rectangle.load_from_file()
+            self.assertTrue(isinstance(reader, list))

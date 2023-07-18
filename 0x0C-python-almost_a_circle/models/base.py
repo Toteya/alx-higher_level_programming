@@ -130,9 +130,7 @@ class Base:
         tw = turtle.Screen()
         tw.setup(600, 600)
         tw.bgcolor("pink")
-        # colormode allows me to set the color with (r,g,b)
-        # this allows me to randomise the colors
-        tw.colormode(255)
+        tw.colormode(255)  # allows me to set the color with rgb
 
         # set turtle starting position
         mt.penup()
