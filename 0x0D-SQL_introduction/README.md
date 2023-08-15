@@ -1,11 +1,19 @@
 # 0x0C. Python - Almost a circle 
 
 ## Resources:
-* [
-* [
-* [
-* [
-* [
+* [Databases]https://intranet.alxswe.com/concepts/37
+* [MySQL Tutorial]https://www.mysqltutorial.org/mysql-create-drop-database.aspx
+* [MySQL Docs]https://dev.mysql.com/doc/refman/8.0/en/creating-database.html
+* [What is Database & SQL?]https://intranet.alxswe.com/rltoken/yyRKTEdRkYEVlRgZPbasjw
+* [A Basic MySQL Tutorial]https://intranet.alxswe.com/rltoken/sV2PtK5YfQsXWW1malRZ5Q
+* [Basic SQL statements: DDL and DML]https://intranet.alxswe.com/rltoken/IUKo4-UaRZSKPvXr5u9oBw
+* [Basic queries: SQL and RA]Basic queries: SQL and RA
+* [SQL technique: functions]https://intranet.alxswe.com/rltoken/-Riv_dzSYsJyvy-LlaO6Mg
+* [SQL technique: subqueries]https://intranet.alxswe.com/rltoken/QpIXoR--8eBIaidgSWYsBQ
+* [What makes the big difference between a backtick and an apostrophe?]https://intranet.alxswe.com/rltoken/Gt0nFJPJRwW2Y0izzwbVrw
+* [MySQL Cheat Sheet]https://intranet.alxswe.com/rltoken/1oU1LwCksQLXjs6fZYezrw
+* [MySQL 8.0 SQL Statement Syntax]https://intranet.alxswe.com/rltoken/HmdmLiYBM0Q34iCYPWd9XQ
+* [installing MySQL in Ubuntu 20.04]https://intranet.alxswe.com/rltoken/IpYI9rgbwfjxOAQQgpHCmQ
 
 ## Tasks:
 
