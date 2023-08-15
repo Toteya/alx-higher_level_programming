@@ -14,6 +14,7 @@
 * [MySQL Cheat Sheet]https://intranet.alxswe.com/rltoken/1oU1LwCksQLXjs6fZYezrw
 * [MySQL 8.0 SQL Statement Syntax]https://intranet.alxswe.com/rltoken/HmdmLiYBM0Q34iCYPWd9XQ
 * [installing MySQL in Ubuntu 20.04]https://intranet.alxswe.com/rltoken/IpYI9rgbwfjxOAQQgpHCmQ
+* [Convert Database to UTF-8]https://dba.stackexchange.com/questions/8239/how-to-easily-convert-utf8-tables-to-utf8mb4-in-mysql-5-5
 
 ## Tasks:
 
