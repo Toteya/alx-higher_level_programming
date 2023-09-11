@@ -21,5 +21,4 @@ const myArray = process.argv.slice(2);
 for (const i in myArray) {
   myArray[i] = parseInt(myArray[i]);
 }
-console.log(myArray);
 console.log(findSecondLargest(myArray));
