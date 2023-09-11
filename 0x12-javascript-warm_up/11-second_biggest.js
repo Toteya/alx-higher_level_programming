@@ -1,13 +1,23 @@
 #!/usr/bin/node
 
-function findSecondLargest (arr) {
+function findLargest (arr) {
   let largest = arr[0];
-  let secondLargest;
   for (let i = 1; i < arr.length; i++) {
-    if (arr[i] >= largest) {
+    if (arr[i] > largest) {
       largest = arr[i];
-    } else if (arr[i] > secondLargest || secondLargest === undefined) {
-      secondLargest = arr[i];
+    }
+  }
+  return largest;
+}
+
+function findSecondLargest (arr) {
+  const largest = findLargest(arr);
+  let secondLargest;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < largest) {
+      if (arr[i] > secondLargest || secondLargest === undefined) {
+        secondLargest = arr[i];
+      }
     }
   }
   if (secondLargest === undefined) {
