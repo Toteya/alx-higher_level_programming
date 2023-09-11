@@ -4,7 +4,7 @@ function findSecondLargest (arr) {
   let largest = arr[0];
   let secondLargest;
   for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > largest) {
+    if (arr[i] >= largest) {
       largest = arr[i];
     } else if (arr[i] > secondLargest || secondLargest === undefined) {
       secondLargest = arr[i];
