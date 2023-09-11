@@ -7,7 +7,7 @@ if (isNaN(Number(process.argv[2]))) {
 } else {
   let line = '';
   for (let i = 0; i < process.argv[2]; i++) {
-    line += 'x';
+    line += 'X';
   }
   for (let i = 0; i < process.argv[2]; i++) {
     console.log(line);
