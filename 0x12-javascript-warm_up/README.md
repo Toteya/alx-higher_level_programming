@@ -1,4 +1,4 @@
-# 0x09. Python - Everything is object 
+# 0x12. JavaScript - Warm up 
 
 ## Resources:
 * [Writing JavaScript Code]https://intranet.alxswe.com/rltoken/3HLjEesLsmyWfRUWnxgUGg
