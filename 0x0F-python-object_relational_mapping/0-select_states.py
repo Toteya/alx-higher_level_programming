@@ -1,10 +1,16 @@
 #!/usr/bin/python3
+"""
+Module 0-select_states
+Connects to and queries a MySQL database
+"""
 
 import MySQLdb
 import sys
 
-
-if __name__ == '__main__':
+def main():
+    """ main function: connects to and queries the db as provided by the
+    command-line arguments
+    """
     my_host = "localhost"
     my_user = sys.argv[1]
     my_pass = sys.argv[2]
@@ -17,3 +23,7 @@ if __name__ == '__main__':
     rows = cur.fetchall()
     for row in rows:
         print(row)
+
+
+if __name__ == '__main__':
+    main()
