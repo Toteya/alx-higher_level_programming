@@ -7,6 +7,7 @@ Connects to and queries a MySQL database
 import MySQLdb
 import sys
 
+
 def main():
     """ main function: connects to and queries the db as provided by the
     command-line arguments
