@@ -4,7 +4,7 @@ import MySQLdb
 import sys
 
 
-def main():
+if __name__ == '__main__':
     my_host = "localhost"
     my_user = sys.argv[1]
     my_pass = sys.argv[2]
@@ -17,7 +17,3 @@ def main():
     rows = cur.fetchall()
     for row in rows:
         print(row)
-
-
-if __name__ == '__main__':
-    main()
