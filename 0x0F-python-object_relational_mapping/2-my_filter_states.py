@@ -23,8 +23,8 @@ def main():
                          passwd=my_pass, db=my_database, port=my_port)
     cur = db.cursor()
     query = "".join(["SELECT * FROM states ",
-                    "WHERE name = '{}' ".format(my_state),
-                    "ORDER BY id ASC"])
+                     "WHERE BINARY name = '{}' ".format(my_state),
+                     "ORDER BY id ASC"])
     cur.execute(query)
     rows = cur.fetchall()
     for row in rows:
