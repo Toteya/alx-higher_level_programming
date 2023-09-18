@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module 1-filter_states
+Module 2-my_filter_states
 Connects to and queries a db
 """
 
@@ -22,7 +22,9 @@ def main():
     db = MySQLdb.connect(host=my_host, user=my_user,
                          passwd=my_pass, db=my_database, port=my_port)
     cur = db.cursor()
-    query = f"SELECT * FROM states WHERE name = '{my_state}' ORDER BY id ASC"
+    query = "".join(["SELECT * FROM states ",
+                    "WHERE name = '{}' ".format(my_state),
+                    "ORDER BY id ASC"])
     cur.execute(query)
     rows = cur.fetchall()
     for row in rows:
