@@ -21,7 +21,7 @@ def main():
     db = MySQLdb.connect(host=my_host, user=my_user,
                          passwd=my_pass, db=my_database, port=my_port)
     cur = db.cursor()
-    cur.execute("SELECT * FROM hbtn_0e_0_usa.states ORDER BY states.id ASC")
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
     rows = cur.fetchall()
     for row in rows:
         print(row)
