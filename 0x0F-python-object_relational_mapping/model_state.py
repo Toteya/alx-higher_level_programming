@@ -10,6 +10,9 @@ Base = declarative_base()
 
 
 class State(Base):
+    """
+    State class links to the MySQL table 'states'
+    """
     __tablename__ = 'states'
     id = Column('id', Integer, unique=True, autoincrement=True, nullable=False,
                 primary_key=True)
