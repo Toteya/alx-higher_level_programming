@@ -12,6 +12,7 @@ def main():
     with urllib.request.urlopen(url) as response:
         page = response.read()
         content = page.decode("utf-8")
+        print("Body response:")
         print("\t- type: {}".format(type(page)))
         print("\t- content: {}".format(page))
         print("\t- utf8 content: {}".format(content))
