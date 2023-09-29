@@ -10,8 +10,4 @@ import sys
 if __name__ == '__main__':
     url = sys.argv[1]
     with urllib.request.urlopen(url) as response:
-        headers = getattr(response.info(), '_headers')
-        for tup in headers:
-            if 'X-Request-Id' in tup:
-                print(tup[1])
-                break
+        print(response.getheader('X-Request-Id'))
