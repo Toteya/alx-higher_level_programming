@@ -12,9 +12,9 @@ def main():
     with urllib.request.urlopen(url) as response:
         page = response.read()
         content = page.decode("utf-8")
-        print(" - type: {}".format(type(page)))
-        print(" - content: {}".format(page))
-        print(" - utf8 content: {}".format(content))
+        print("\t- type: {}".format(type(page)))
+        print("\t- content: {}".format(page))
+        print("\t- utf8 content: {}".format(content))
 
 
 if __name__ == '__main__':
