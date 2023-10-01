@@ -24,7 +24,7 @@ def main():
     # Base.metadata.create_all(engine)
 
     session = engine.connect()
-    result = session.execute(select(State).order_by(State.id))
+    result = session.execute(select(State).where(State.id == 1))
 
     result = list(result)
     print('{}: {}'.format(result[0].id, result[0].name))
