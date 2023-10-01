@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module 9-model_state_filter_a
+Module 10-model_state_my_get
 """
 
 import sys
@@ -13,7 +13,7 @@ import urllib
 def main():
     """
     Connects to and queries the given database
-    Lists all State objects containing 'a'
+    Prints a State object that matches the name passes as parameter
     """
     user = sys.argv[1]
     password = urllib.parse.quote_plus(sys.argv[2])
