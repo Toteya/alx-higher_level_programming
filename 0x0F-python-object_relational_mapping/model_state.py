@@ -5,6 +5,7 @@ Module model_state
 
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
@@ -17,6 +18,7 @@ class State(Base):
     id = Column('id', Integer, unique=True, autoincrement=True, nullable=False,
                 primary_key=True)
     name = Column('name', String(128), nullable=False)
+    cities = relationship("City")
 
     # engine = create_engine('sqlite://')
     # Base
