@@ -24,9 +24,11 @@ def main():
     engine = create_engine(db_url, pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
 
+    new_state = State(name='Louisiana')
     with Session() as session:
-        session.add(State(name='Louisiana'))
+        session.add(new_state)
         session.commit()
+        print(new_state.id)
 
 
 if __name__ == '__main__':
