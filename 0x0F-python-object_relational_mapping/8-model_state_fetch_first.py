@@ -6,6 +6,7 @@ Module model_state_fetch_all
 import sys
 from model_state import Base, State
 from sqlalchemy import create_engine, select, MetaData
+from sqlalchemy.orm import sessionmaker
 import urllib
 
 
@@ -23,11 +24,13 @@ def main():
     engine = create_engine(db_url, pool_pre_ping=True)
     # Base.metadata.create_all(engine)
 
-    session = engine.connect()
-    result = session.execute(select(State).where(State.id == 1))
+    # session = engine.connect()
+    Session = sessionmaker(bind=engine)
 
-    result = list(result)
-    print('{}: {}'.format(result[0].id, result[0].name))
+    # result = session.query(State).first()
+    with Session() as session:
+        result = session.query(State).first()
+        print('{}: {}'.format(result.id, result.name))
 
 
 if __name__ == '__main__':
