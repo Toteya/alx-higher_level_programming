@@ -30,7 +30,10 @@ def main():
     # result = session.query(State).first()
     with Session() as session:
         result = session.query(State).first()
-        print('{}: {}'.format(result.id, result.name))
+        if not result:
+            print(Nothing)
+        else:
+            print('{}: {}'.format(result.id, result.name))
 
 
 if __name__ == '__main__':
