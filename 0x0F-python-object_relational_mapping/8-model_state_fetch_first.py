@@ -31,7 +31,7 @@ def main():
     with Session() as session:
         result = session.query(State).first()
         if not result:
-            print(Nothing)
+            print('Nothing')
         else:
             print('{}: {}'.format(result.id, result.name))
 
