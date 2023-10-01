@@ -13,7 +13,7 @@ from urllib.parse import quote
 def main():
     """
     Connects to and queries the given database
-    Prints a State object that matches the name passes as parameter
+    Adds a new State 'Louisiana' to the table
     """
     user = sys.argv[1]
     password = quote(sys.argv[2])
