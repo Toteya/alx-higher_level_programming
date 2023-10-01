@@ -25,7 +25,7 @@ def main():
     Session = sessionmaker(bind=engine)
 
     with Session() as session:
-        result = session.query(State).filter(State.name.contains('a'))
+        result = session.query(State).order_by(State.id).filter(State.name.contains('a'))
         # print(type(result))
         for item in result:
             print('{}: {}'.format(item.id, item.name))
