@@ -8,7 +8,7 @@ from relationship_city import City
 from relationship_state import State
 from urllib.parse import quote
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, joinedload
 import sys
 
 if __name__ == '__main__':
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
 
     with Session() as session:
-        result = session.query(State).order_by(State.id).all()
+        result = session.query(State).options(joinedload(State.cities)).all()
         for state in result:
             print("{}: {}".format(state.id, state.name))
             for city in state.cities:
