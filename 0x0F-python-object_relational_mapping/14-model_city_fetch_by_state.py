@@ -5,7 +5,7 @@ Prints all City objects from the given database
 """
 
 from model_city import City
-from model_state import State
+from model_state import Base, State
 from urllib.parse import quote
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -19,6 +19,7 @@ if __name__ == '__main__':
                                                      password,
                                                      database)
     engine = create_engine(db_url, pool_pre_ping=True)
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
 
     with Session() as session:
