@@ -22,8 +22,6 @@ if __name__ == '__main__':
 
     Session = sessionmaker(bind=engine)
 
-    print(State.cities)
-
     with Session() as session:
         result = session.query(State).order_by(State.id).all()
         for state in result:
