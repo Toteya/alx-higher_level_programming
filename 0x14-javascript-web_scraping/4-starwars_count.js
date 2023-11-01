@@ -4,7 +4,7 @@
 const request = require('request');
 
 const url = process.argv[2];
-const characterId = 'https://swapi-api.alx-tools.com/api/people/18/';
+const characterId = '18';
 
 request(url, (error, response, body) => {
   if (error) console.error(error);
@@ -13,8 +13,11 @@ request(url, (error, response, body) => {
   let numOfAppearances = 0;
   for (const film of films) {
     const characters = film.characters;
-    if (characters.includes(characterId)) {
-      numOfAppearances++;
+    for (const character of characters) {
+      const arr = character.split('/');
+      if (arr.includes(characterId)) {
+        numOfAppearances++;
+      }
     }
   }
   console.log(numOfAppearances);
