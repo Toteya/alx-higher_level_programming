@@ -13,15 +13,13 @@ request(url, (error, response, body) => {
   const dict = {};
 
   for (const todo of todos) {
-    if (todo.userId !== id) {
-      if (tasksCompleted !== 0) dict[id.toString()] = tasksCompleted;
-      id = todo.userId;
-      tasksCompleted = 0;
-    }
-    if (todo.completed) {
-      tasksCompleted++;
+    if (!todo.completed) continue;
+      
+    if (todo.userId in dict) {
+      dict[todo.userId.toString()]++;
+    } else {
+      dict[todo.userId.toString()] = 1;
     }
   }
-  if (tasksCompleted !== 0) dict[id.toString()] = tasksCompleted;
   console.log(dict);
 });
