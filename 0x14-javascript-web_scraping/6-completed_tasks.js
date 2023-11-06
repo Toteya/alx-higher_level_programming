@@ -8,13 +8,11 @@ const url = process.argv[2];
 request(url, (error, response, body) => {
   if (error) console.error(error);
   const todos = JSON.parse(body);
-  let id = 0;
-  let tasksCompleted = 0;
   const dict = {};
 
   for (const todo of todos) {
     if (!todo.completed) continue;
-      
+
     if (todo.userId in dict) {
       dict[todo.userId.toString()]++;
     } else {
